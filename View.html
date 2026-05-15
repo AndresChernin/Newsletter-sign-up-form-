@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter sign-up form with succes message</title>
+    
+    <link rel="stylesheet" href="styles-for-success-component.css">
+    <link rel="stylesheet" href="styles-for-main-container.css">
+    
+    <link rel="stylesheet" href="styles-for-upper-component.css">
+    
+    <link rel="stylesheet" href="styles-for-middle-component.css">
+    <link rel="stylesheet" href="styles-for-lower-component.css">
+  
+    <link href=
+    "https://fonts.googleapis.com/css2?family=Roboto:wght@200;400;700&display=swap" 
+    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;800;900&display=swap"
+ rel="stylesheet">
+    
+  </head>
+  <body>
+    
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+    
+    <script src="UpperComponent.jsx" type="text/babel"></script>
+    <script src="MiddleComponent.jsx" type="text/babel"></script>
+    <script src="LowerComponent.jsx" type="text/babel"></script>
+    <script src="SuccessComponent.jsx" type="text/babel"></script>
+    <script src="ValidationModel.mjs"></script>
+    <script type="text/babel">
+      
+
+
+       function App(){
+        const [isSuccess, setIsSuccess] = React.useState(false);
+         const[currentEmail,setEmail]=React.useState({email:""});
+         const[currentError,setError]=React.useState({error:""});
+         const emptyError={error:""};
+         const emailController=React.useRef(
+          new ValidationModel()).current;
+         
+         function noError(currentError){
+          return Object.values(currentError).every(e=>e==="");
+         }
+         function handleChangeOfInput(field){
+          
+         
+          return(event)=>{
+            const newEmail=event.target.value;
+            const newCurrentEmail={...currentEmail,[field]:newEmail};
+            const newError=emailController.makeLiveValidation(newEmail);
+            console.log(`Error: ${JSON.stringify(currentError)}`);
+            setEmail(newCurrentEmail);
+            setError({error:newError});
+            console.log(`Error: ${JSON.stringify(currentError)}`);
+          }
+         }
+         function handleChangeOfInput2(field){
+
+            return(event)=>{
+
+            const newEmail = event.target.value;
+            const oldEmail = currentEmail[field];
+
+            const newError = emailController.makeLiveValidation(newEmail);
+
+            const isDeleting =newEmail.length < oldEmail.length;
+
+            const errorWasFixed =newError === "";
+
+            if(noError(currentError) ||isDeleting ||errorWasFixed){
+
+               setEmail({...currentEmail,[field]:newEmail});
+               setError({error:newError});
+            }
+          }
+        }
+        function handleButtonClick(event){
+          event.preventDefault();
+          if(noError(currentError)){
+             var newError=emailController.makeButtonValidation(currentEmail.email);
+             console.log(newError);
+            setError({error:newError});
+            if(newError === ""){
+               setIsSuccess(true);
+            }
+        }
+        }
+        function handleDismissClick(){
+              setIsSuccess(false);
+
+              setEmail({email:""});
+              setError({error:""});
+       }  
+        return(
+          <main className={
+    isSuccess
+    ? "main-container success-bg"
+    : "main-container"
+  }>
+          {!isSuccess && (
+           <section className="newsletter-container">
+              <UpperComponent imagePath="./assets/images/illustration-sign-up-mobile.svg"/>
+             <div className="left-part">
+              <MiddleComponent iconLink="./assets/images/icon-list.svg"/>
+
+              <LowerComponent
+                 currentEmail={currentEmail}
+                 currentError={currentError}
+                 inputFunction={handleChangeOfInput}
+                 buttonFunction={handleButtonClick}
+              />
+              </div>
+          </section>
+          )}
+
+          {isSuccess && (
+           <SuccessComponent email={currentEmail.email} buttonFunction={handleDismissClick}/>)}
+          </main>
+         )      
+         
+       }
+      const container = document.querySelector('#root');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

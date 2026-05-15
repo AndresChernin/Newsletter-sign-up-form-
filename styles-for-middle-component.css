@@ -1,0 +1,26 @@
+.middle-part{
+  padding-left:var(--desktop-padding-left);
+  padding-top:var(--middle-part-padding-top);
+  padding-bottom:var(--middle-part-padding-botton);
+  
+  box-sizing: border-box;
+  display:flex;
+  flex-direction: column;
+  gap:var(--middle-part-gap);
+}
+.benefits-list{
+  list-style:none;
+  padding:0;
+}
+
+.benefit-item{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+
+.benefit-item img{
+  width:20px;
+  height:20px;
+}

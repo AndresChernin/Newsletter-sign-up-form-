@@ -1,0 +1,66 @@
+.signup-form{
+    width:100%;
+    
+    padding-left:var(--desktop-padding-left);
+    padding-right:var(--desktop-padding-right);
+    display:flex;
+    flex-direction: column;
+    
+    box-sizing: border-box;
+}
+.email-error-part{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    padding-bottom: 0.35rem;
+}
+.email-error-part p{
+    font-weight: 600;
+    font-size: 12px;
+}
+.error-part{
+    color:var(--color-of-error-text);
+}
+input{
+    width:100%;
+    box-sizing: border-box;
+    
+    border-radius: var(--lower-part-container-radius);
+    padding-top:var(--desktop-padding-left);
+    padding-bottom: var(--desktop-padding-left);
+    padding-left:var(--desktop-padding-left);
+    
+}
+.no-error-input{
+    background-color: var(--container-bg-color);
+    border: 2px solid var(--color-of-no-error-text);
+}
+.no-error-input:focus{
+    outline:none;
+    border:2px solid var(--color-of-no-error-text);
+}
+.no-error-input::placeholder{
+    color:var(--color-of-no-error-text);
+}
+.error-input{
+   background-color: var(--color-bg-error);
+   border: 2px solid var(--color-of-error-text); 
+   color: var(--color-of-error-text);
+}
+.error-input:focus{
+    outline:none;
+    border:2px solid var(--color-of-error-text);
+}
+.error-input::placeholder{
+   color:var(--color-of-error-text);
+}
+.button-part{
+    width:100%;
+    margin-top:var(--desktop-padding-left);
+    padding-top:var(--desktop-padding-left);
+    padding-bottom: var(--desktop-padding-left);
+    border-radius: var(--lower-part-container-radius);
+    border:none;
+    color:var(--buttom-text-color);
+    background-color: var(--color-of-h-and-buttom);
+}
