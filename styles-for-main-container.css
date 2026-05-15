@@ -1,0 +1,92 @@
+:root{
+    /*paddings, gaps, radiuses*/
+    --illustration-border-radius:1rem;
+    --universal-padding-left:10rem;
+    --universal-padding-right:10rem;
+    --middle-part-padding-top:2.5rem;
+    --middle-part-padding-botton:1.5rem;
+    --middle-part-gap:1.5rem;
+    --lower-part-gap:15.5rem;
+    --lower-part-container-radius:0.5rem;
+    --desktop-main-container-radius:2rem;
+    --desktop-padding-top:1rem;
+    --desktop-padding-bottom:1rem;
+    --desktop-padding-left:1rem;
+    --desktop-padding-right:1rem;
+    --success-padding-left:1rem;
+    --success-padding-right:1rem;
+    --success-padding-bottom:5rem;
+    --success-padding-top:5rem;
+    --success-icon-h-p-part:1rem;
+
+    /*colors*/
+    --body-background-color:hsl(235, 18%, 26%);
+    --color-of-h-and-buttom:hsl(234, 29%, 20%);
+    --container-bg-color:white;
+    --buttom-text-color:white;
+    --color-and-text-color-of-input:hsl(0, 0%,58%);
+    --color-of-error-text:hsl(4, 100%, 67%);
+    --color-bg-error:hsl(6, 83%, 91%);
+    --color-of-no-error-text:hsl(0, 0%,58%);
+    /*text sizes*/
+    --size-of-p:16px;
+}
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    height:auto;
+    background-color:var(--body-background-color);
+    overflow-x:hidden;
+    font-family: 'Roboto', sans-serif;
+}
+#root{
+    min-height: 100vh;
+    margin:0;
+}
+.main-container{
+    width:100%;
+    background-color: var(--container-bg-color);
+    padding-bottom:5rem;
+}
+.success-bg{
+    background-color:var(--body-background-color);
+    min-height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+h1,h2,p,ul{
+    margin:0;
+    padding:0;
+}
+p{
+    font-size: 16px;
+    color:var(--color-of-h-and-buttom);
+}
+
+@media(min-width:500px){
+    .main-container{
+        min-height: 100vh;
+        background-color: var(--body-background-color);
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .newsletter-container{
+        background-color: var(--container-bg-color);
+        border-radius: var(--desktop-main-container-radius);
+        padding-top:var(--desktop-padding-top);
+        padding-bottom: var(--desktop-padding-bottom);
+        padding-right:var(--desktop-padding-right);
+        gap:1rem;
+        width:60vw;
+        display:flex;
+        flex-direction: row-reverse;
+    }
+
+    .success-bg{
+        background-color: var(--body-background-color);
+    }
+}

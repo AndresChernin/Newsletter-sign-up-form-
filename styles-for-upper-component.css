@@ -1,0 +1,34 @@
+
+.upper-part{
+    width:100%;
+   
+    display:flex;
+    justify-content: center;
+
+}
+.illustration-settings{
+    width:100%;
+    /*height:auto;*/
+}
+
+@media(min-width:500px){
+
+    .upper-part{
+        display:flex;
+
+        height:auto;
+
+        overflow:hidden;
+
+        border-radius:var(--illustration-border-radius);
+    }
+
+    .illustration-settings{
+        width:100%;
+        height:100%;
+
+        object-fit:cover;
+
+        display:block;
+    }
+}
